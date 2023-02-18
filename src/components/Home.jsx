@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     retriveData();
-  }, []);
+  }, [city]);
 
   return (
     <Container>
