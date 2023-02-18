@@ -3,6 +3,25 @@ body {
   background-image: url(../public/sfondo.jpg);
   font-family: "Raleway", sans-serif;
 }
-.card-img-top {
-  width: 50%;
+.city {
+  font-weight: bold;
+  font-size: 2em;
+}
+.temp {
+  font-size: 1.5em;
+}
+.temp .min {
+  color: blue;
+  font-size: 0.7em;
+}
+.temp .max {
+  color: red;
+  font-size: 0.7em;
+}
+
+.descr {
+}
+.time {
+}
+.humidity {
 }
