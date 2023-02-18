@@ -2,16 +2,21 @@ import { useEffect, useState } from "react";
 import { Col, Container, Row, Spinner } from "react-bootstrap";
 import MainSearch from "./MainSearch";
 import WeatherCardNow from "./WeatherCardNow";
-import WeatherCardList from "./WeatherCardList";
 import fetchWeatherDataByCity from "./fetchWeatherDataByCity";
+import ForecastCardList from "./ForecastCardList";
+import fetchForecastDataByCity from "./fetchForecastDataByCity";
 
 const Home = () => {
   const [weatherCity, setWeatherCity] = useState(null);
+  const [forecastCity, setForecastCity] = useState([]);
   const [city, setCity] = useState("Milano");
 
   const retriveData = async () => {
-    const data = await fetchWeatherDataByCity(city);
-    setWeatherCity(data);
+    const weatherData = await fetchWeatherDataByCity(city);
+    setWeatherCity(weatherData);
+
+    const forecastData = await fetchForecastDataByCity(city);
+    setForecastCity(forecastData);
   };
 
   useEffect(() => {
@@ -23,9 +28,20 @@ const Home = () => {
       <MainSearch city={city} setCity={setCity} />
       <Row>
         {weatherCity ? (
-          <Col xs={6}>
-            <WeatherCardNow singleDay={weatherCity} />
-          </Col>
+          weatherCity.status != 404 ? (
+            <>
+              <Col xs={4}>
+                <WeatherCardNow singleDay={weatherCity} />
+              </Col>
+              <Col>
+                <ForecastCardList forecastHours={forecastCity.slice(0, 6)} />
+              </Col>
+            </>
+          ) : (
+            <div className="text-center mt-4">
+              <span>{weatherCity.message}</span>
+            </div>
+          )
         ) : (
           <div className="text-center">
             <Spinner animation="border" variant="primary">
@@ -34,7 +50,7 @@ const Home = () => {
           </div>
         )}
 
-        <Col xs={6}>{/* <WeatherCardList /> */}</Col>
+        {/*<Col xs={6}> <ForecastCardList /> </Col>*/}
       </Row>
     </Container>
   );
