@@ -7,7 +7,19 @@ const ForecastCardHour = (props) => {
   let time = new Date(props.forecast.dt_txt);
 
   return (
-    <Col className="h-100" xs={4}>
+    <Col xs={2}>
+      <img
+        style={{ width: "100%", maxWidth: "150px" }}
+        src={`https://openweathermap.org/img/wn/${props.forecast.weather[0].icon}@4x.png`}
+      ></img>
+    </Col>
+  );
+};
+
+export default ForecastCardHour;
+
+{
+  /* <Col className="h-100" xs={4}>
       <Card className="mt-4 shadow-lg text-center">
         <Card.Img
           className=""
@@ -38,8 +50,5 @@ const ForecastCardHour = (props) => {
           </Card.Text>
         </Card.Body>
       </Card>
-    </Col>
-  );
-};
-
-export default ForecastCardHour;
+    </Col> */
+}

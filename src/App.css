@@ -3,23 +3,33 @@ body {
   background-image: url(../public/sfondo.jpg);
   font-family: "Raleway", sans-serif;
 }
+
+.weather-card-now {
+  background-color: white;
+  border-radius: 10px;
+}
+.weather-card-now p {
+  margin: 0;
+}
 .city {
-  font-weight: bold;
-  font-size: 2em;
+  margin: 0;
 }
 .temp {
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
-.temp .min {
+.temp-min {
   color: blue;
-  font-size: 0.7em;
+  font-size: 1em;
 }
-.temp .max {
+.temp-max {
   color: red;
-  font-size: 0.7em;
+  font-size: 1em;
 }
 
 .descr {
+  font-size: 1.5em;
+  text-transform: capitalize;
+  margin: 0;
 }
 .time {
 }

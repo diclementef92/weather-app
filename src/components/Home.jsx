@@ -26,19 +26,17 @@ const Home = () => {
   return (
     <Container>
       <MainSearch city={city} setCity={setCity} />
-      <Row>
+      <Row
+        className="d-flex align-items-center weather-card-now"
+        style={{ width: "50vw", margin: "10px auto  0 auto" }}
+      >
         {weatherCity ? (
           weatherCity.status != 404 ? (
             <>
-              <Col xs={4}>
-                <WeatherCardNow singleDay={weatherCity} />
-              </Col>
-              <Col>
-                <ForecastCardList forecastHours={forecastCity.slice(0, 6)} />
-              </Col>
+              <WeatherCardNow singleDay={weatherCity} />
             </>
           ) : (
-            <div className="text-center mt-4">
+            <div className="text-center p-4">
               <span>{weatherCity.message}</span>
             </div>
           )
@@ -49,11 +47,16 @@ const Home = () => {
             </Spinner>
           </div>
         )}
-
-        {/*<Col xs={6}> <ForecastCardList /> </Col>*/}
+      </Row>
+      <Row>
+        <ForecastCardList forecastHours={forecastCity.slice(0, 6)} />
       </Row>
     </Container>
   );
 };
 
 export default Home;
+
+{
+  /* <ForecastCardList forecastHours={forecastCity.slice(0, 6)} /> */
+}
