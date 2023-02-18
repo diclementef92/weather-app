@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import WeatherCard from "./WeatherCardToday";
+import WeatherCard from "./WeatherCardNow";
 
 const WeatherCardList = (props) => {
   const [weatherDays, setWeatherDays] = useState([]);

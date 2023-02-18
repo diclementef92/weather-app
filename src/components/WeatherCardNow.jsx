@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 
-const WeatherCardToday = (props) => {
+const WeatherCardNow = (props) => {
   // const [date, setDate] = useState(0);
 
   useEffect(() => {
@@ -29,4 +29,4 @@ const WeatherCardToday = (props) => {
   );
 };
 
-export default WeatherCardToday;
+export default WeatherCardNow;

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row, Spinner } from "react-bootstrap";
 import MainSearch from "./MainSearch";
-import WeatherCardToday from "./WeatherCardToday";
+import WeatherCardNow from "./WeatherCardNow";
 import WeatherCardList from "./WeatherCardList";
-import WeatherCard from "./WeatherCardToday";
 
 const Home = () => {
   const [weatherCity, setWeatherCity] = useState(null);
+  const [city, setCity] = useState("");
 
   const baseUrl =
     "https://api.openweathermap.org/data/2.5/weather?appid=fad6b6ba29a0cab57650fdbccd10c8e5&units=metric&lang=it";
@@ -32,11 +32,11 @@ const Home = () => {
 
   return (
     <Container>
-      <MainSearch />
+      <MainSearch setCity={setCity} />
       <Row>
         {weatherCity ? (
           <Col xs={6}>
-            <WeatherCardToday singleDay={weatherCity} />{" "}
+            <WeatherCardNow singleDay={weatherCity} />{" "}
           </Col>
         ) : (
           <div className="text-center">

@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button, Spinner } from "react-bootstrap";
-import WeatherCard from "./WeatherCardToday";
+import WeatherCard from "./WeatherCardNow";
 import WeatherCardList from "./WeatherCardList";
 
-const MainSearch = () => {
+const MainSearch = (props) => {
   const [city, setCity] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
-    setCity(e.target.value);
+    console.log(e.target.elements.city.value);
+    // props.setCity(e.target.elements.city.value);
   };
 
   const baseUrl =
@@ -45,8 +45,11 @@ const MainSearch = () => {
         </Col>
         <Col xs={12} className="mx-auto">
           <Form onSubmit={handleSubmit}>
-            <Form.Control type="search" placeholder="search a location" />
-            <Button className="my-2">cerca</Button>
+            <Form.Control
+              type="text"
+              name="city"
+              placeholder="inserisci la tua citta"
+            />
           </Form>
         </Col>
         {/* {city ? <WeatherCard day={city} /> : <p></p>} */}
