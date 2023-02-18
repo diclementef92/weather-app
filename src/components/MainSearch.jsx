@@ -40,17 +40,16 @@ const MainSearch = () => {
   return (
     <Container>
       <Row>
-        <Col xs={10} className="mx-auto my-3">
+        <Col xs={12} className="mx-auto my-3">
           <h1>Cerca città</h1>
         </Col>
-        <Col xs={10} className="mx-auto">
+        <Col xs={12} className="mx-auto">
           <Form onSubmit={handleSubmit}>
             <Form.Control type="search" placeholder="search a location" />
+            <Button className="my-2">cerca</Button>
           </Form>
         </Col>
-        <Col xs={10} className="mx-auto mb-5">
-          {/* {city ? <WeatherCard day={city} /> : <p></p>} */}
-        </Col>
+        {/* {city ? <WeatherCard day={city} /> : <p></p>} */}
       </Row>
     </Container>
   );

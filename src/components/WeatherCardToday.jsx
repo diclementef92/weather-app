@@ -8,6 +8,7 @@ const WeatherCardToday = (props) => {
     // let date = new Date(props.singleDay.dt);
     // console.log(date);
     // setDate(date.toISOString);
+    console.log(props);
   }, []);
 
   return (
