@@ -1,35 +1,53 @@
-import { Card, Col } from "react-bootstrap";
-import { BsFillCaretUpFill } from "react-icons/bs";
-import { BsFillCaretDownFill } from "react-icons/bs";
+import { Col, Row } from "react-bootstrap";
+import { BsThermometerHigh } from "react-icons/bs";
 
 const WeatherCardNow = (props) => {
+  const toggleSelected = (e) => {
+    // $("#weather-info").toggleClass("hidden");
+    console.dir(e.currentTarget.nextSibling.classList.toggle("d-none"));
+  };
+
   return (
     <>
-      <Col xs={3}>
-        <img
-          style={{ width: "100%", maxWidth: "150px" }}
-          src={`https://openweathermap.org/img/wn/${props.singleDay.weather[0].icon}@4x.png`}
-        ></img>
-      </Col>
+      <Row
+        className="d-flex align-items-center weather-card-now"
+        style={{ margin: "10px auto  0 auto" }}
+        onClick={(e) => toggleSelected(e)}
+      >
+        <Col xs={3}>
+          <img
+            style={{ width: "100%", maxWidth: "150px" }}
+            src={`https://openweathermap.org/img/wn/${props.singleDay.weather[0].icon}@4x.png`}
+          ></img>
+        </Col>
 
-      <Col className="d-flex flex-column justify-content-center">
-        <p className="descr">{props.singleDay.weather[0].description}</p>
+        <Col className="d-flex flex-column justify-content-center">
+          <p className="descr">{props.singleDay.weather[0].description}</p>
 
-        <p className="city">
-          {props.singleDay.name}, {props.singleDay.sys.country}
-        </p>
-      </Col>
-      <Col className="d-flex flex-column  align-items-end">
-        <p className="temp">{props.singleDay.main.temp.toFixed(0)}°C</p>
-        <p>
-          <span className="temp-max">
-            {props.singleDay.main.temp_max.toFixed(0)}°C /{" "}
-          </span>
-          <span className="temp-min">
-            {props.singleDay.main.temp_min.toFixed(0)}°C
-          </span>
-        </p>
-      </Col>
+          <p className="city">
+            {props.singleDay.name}, {props.singleDay.sys.country}
+          </p>
+        </Col>
+        <Col className="d-flex flex-column  align-items-end">
+          <p className="temp">
+            {props.singleDay.main.temp.toFixed(0)}°C
+            <BsThermometerHigh />
+          </p>
+          <p>
+            <span className="temp-max">
+              {props.singleDay.main.temp_max.toFixed(0)}°C /{" "}
+            </span>
+            <span className="temp-min">
+              {props.singleDay.main.temp_min.toFixed(0)}°C
+            </span>
+          </p>
+        </Col>
+      </Row>
+      <Row class="alert alert-light d-none" id="weather-info" role="alert">
+        <Col xs={4}>Umidità: {props.singleDay.main.humidity} %</Col>
+        <Col xs={4}>Pressione: {props.singleDay.main.pressure} hPa</Col>
+        <Col xs={4}>Vento: {props.singleDay.wind.speed} m/s</Col>
+      </Row>
     </>
   );
 };

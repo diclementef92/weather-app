@@ -24,30 +24,26 @@ const Home = () => {
   }, [city]);
 
   return (
-    <Container style={{ width: "50vw" }}>
+    <Container>
       <MainSearch city={city} setCity={setCity} />
-      <Row
-        className="d-flex align-items-center weather-card-now"
-        style={{ margin: "10px auto  0 auto" }}
-      >
-        {weatherCity ? (
-          weatherCity.status != 404 ? (
-            <>
-              <WeatherCardNow singleDay={weatherCity} />
-            </>
-          ) : (
-            <div className="text-center p-4">
-              <span>{weatherCity.message}</span>
-            </div>
-          )
+
+      {weatherCity ? (
+        weatherCity.status != 404 ? (
+          <>
+            <WeatherCardNow singleDay={weatherCity} />
+          </>
         ) : (
-          <div className="text-center">
-            <Spinner animation="border" variant="primary">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
+          <div className="text-center p-4">
+            <span>{weatherCity.message}</span>
           </div>
-        )}
-      </Row>
+        )
+      ) : (
+        <div className="text-center">
+          <Spinner animation="border" variant="primary">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </div>
+      )}
       <Row className="w-100 m-0 mt-2">
         <ForecastCardList forecastHours={forecastCity.slice(0, 6)} />
       </Row>
