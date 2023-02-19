@@ -24,11 +24,11 @@ const Home = () => {
   }, [city]);
 
   return (
-    <Container>
+    <Container style={{ width: "50vw" }}>
       <MainSearch city={city} setCity={setCity} />
       <Row
         className="d-flex align-items-center weather-card-now"
-        style={{ width: "50vw", margin: "10px auto  0 auto" }}
+        style={{ margin: "10px auto  0 auto" }}
       >
         {weatherCity ? (
           weatherCity.status != 404 ? (
@@ -48,7 +48,7 @@ const Home = () => {
           </div>
         )}
       </Row>
-      <Row>
+      <Row className="w-100 m-0 mt-2">
         <ForecastCardList forecastHours={forecastCity.slice(0, 6)} />
       </Row>
     </Container>

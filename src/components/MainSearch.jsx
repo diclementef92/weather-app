@@ -13,10 +13,7 @@ const MainSearch = (props) => {
     <>
       <div className="text-center">
         <h1>Meteo in tempo reale</h1>
-        <Form
-          onSubmit={handleSubmit}
-          style={{ width: "50vw", margin: "0 auto  0 auto" }}
-        >
+        <Form onSubmit={handleSubmit} style={{ margin: "0 auto  0 auto" }}>
           <Form.Control
             type="text"
             name="city"

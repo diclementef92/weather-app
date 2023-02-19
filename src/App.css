@@ -35,3 +35,20 @@ body {
 }
 .humidity {
 }
+
+.forecast-card-hour {
+  background-color: white;
+  padding: 0;
+}
+.forecast-card-hour .temp {
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+.forecast-card-hour .temp-min,
+.temp-max {
+  font-size: 0.8em;
+  margin: 0;
+}
+.forecast-card-hour .time {
+  margin-top: 10px;
+}
