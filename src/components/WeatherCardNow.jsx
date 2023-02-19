@@ -1,5 +1,5 @@
 import { Col, Row } from "react-bootstrap";
-import { BsThermometerHigh } from "react-icons/bs";
+import { BsThermometerHalf } from "react-icons/bs";
 
 const WeatherCardNow = (props) => {
   const toggleSelected = (e) => {
@@ -31,7 +31,7 @@ const WeatherCardNow = (props) => {
         <Col className="d-flex flex-column  align-items-end">
           <p className="temp">
             {props.singleDay.main.temp.toFixed(0)}°C
-            <BsThermometerHigh />
+            <BsThermometerHalf />
           </p>
           <p>
             <span className="temp-max">
@@ -43,7 +43,12 @@ const WeatherCardNow = (props) => {
           </p>
         </Col>
       </Row>
-      <Row class="alert alert-light d-none" id="weather-info" role="alert">
+      <Row
+        className="w-100 alert alert-light d-none text-center"
+        id="weather-info"
+        role="alert"
+        style={{ margin: "1em auto  2em auto" }}
+      >
         <Col xs={4}>Umidità: {props.singleDay.main.humidity} %</Col>
         <Col xs={4}>Pressione: {props.singleDay.main.pressure} hPa</Col>
         <Col xs={4}>Vento: {props.singleDay.wind.speed} m/s</Col>

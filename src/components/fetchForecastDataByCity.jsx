@@ -8,16 +8,13 @@ const fetchForecastDataByCity = async (value) => {
       counter++;
       const res = await fetch(baseUrl + "&q=" + value);
 
+      const body = await res.json();
       if (res.ok) {
-        const body = await res.json();
         console.log(body.list);
         return body.list;
       } else {
         console.log("Fetch response status: ", res.status);
-        return {
-          message: "Città non trovata, prova di nuovo",
-          status: res.status,
-        };
+        return { ...body, message: "città non trovata, prova di nuovo" }; //traduco il message in italiano
       }
     } catch (err) {
       console.log("Fetch error: ", err);

@@ -28,7 +28,7 @@ const Home = () => {
       <MainSearch city={city} setCity={setCity} />
 
       {weatherCity ? (
-        weatherCity.status != 404 ? (
+        weatherCity.cod != 404 ? (
           <>
             <WeatherCardNow singleDay={weatherCity} />
           </>
@@ -45,7 +45,11 @@ const Home = () => {
         </div>
       )}
       <Row className="w-100 m-0 mt-2">
-        <ForecastCardList forecastHours={forecastCity.slice(0, 6)} />
+        {forecastCity.cod != 404 ? (
+          <ForecastCardList forecastHours={forecastCity.slice(0, 6)} />
+        ) : (
+          ""
+        )}
       </Row>
     </Container>
   );
