@@ -1,7 +1,7 @@
 let counter = 0;
-const fetchWeatherDataByCity = async (value) => {
+const fetchCities = async (value) => {
   const baseUrl =
-    "https://api.openweathermap.org/data/2.5/weather?appid=fad6b6ba29a0cab57650fdbccd10c8e5&units=metric&lang=it";
+    "http://api.openweathermap.org/geo/1.0/direct?appid=fad6b6ba29a0cab57650fdbccd10c8e5&limit=5";
 
   if (counter < 50) {
     try {
@@ -14,7 +14,7 @@ const fetchWeatherDataByCity = async (value) => {
         return body;
       } else {
         console.log("Fetch response status: ", res.status);
-        return { ...body, message: "città non trovata, prova di nuovo" }; //traduco il message in italiano
+        return { ...body, message: "città non trovata, prova di nuovo" };
       }
     } catch (err) {
       console.log("Fetch error: ", err);
@@ -23,4 +23,4 @@ const fetchWeatherDataByCity = async (value) => {
     console.log("limite chiamate raggiunto");
   }
 };
-export default fetchWeatherDataByCity;
+export default fetchCities;

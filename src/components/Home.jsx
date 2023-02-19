@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Col, Container, Row, Spinner } from "react-bootstrap";
+import { Container, Row, Spinner } from "react-bootstrap";
 import MainSearch from "./MainSearch";
 import WeatherCardNow from "./WeatherCardNow";
 import fetchWeatherDataByCity from "./fetchWeatherDataByCity";
@@ -56,7 +56,3 @@ const Home = () => {
 };
 
 export default Home;
-
-{
-  /* <ForecastCardList forecastHours={forecastCity.slice(0, 6)} /> */
-}
