@@ -5,36 +5,32 @@ import fetchCities from "./fetchCities";
 
 const MainSearch = (props) => {
   const [citiesResults, setCitiesResults] = useState([]);
-  const [cityName, setCityName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.elements.city.value);
+    // props.setCity(e.target.value);
     props.setCity(e.target.elements.city.value);
   };
 
   const handleChange = async (e) => {
-    // console.log(e.target.value);
     const cities = await fetchCities(e.target.value);
+    // setCityName(e.target.value)
     setCitiesResults(cities);
-
-    // setCityName(e.target.value);
-    // console.log(e.target.value);
   };
 
   const citySelected = (e) => {
-    // setCityName(e.target.value);
-    console.log(e.target.value);
+    // props.setCity(e.target.elements.city.value);
     props.setCity(e.target.value);
   };
-
-  // useEffect(() => {}, [cityName]);
 
   return (
     <>
       <div className="text-center">
         <h1>Meteo in tempo reale</h1>
-        <Form style={{ margin: "0 auto  0 auto" }}>
+        <Form
+          onSubmit={(e) => handleSubmit(e)}
+          style={{ margin: "0 auto  0 auto" }}
+        >
           <Form.Control
             type="select"
             name="city"
