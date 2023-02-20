@@ -24,7 +24,8 @@ const MainSearch = (props) => {
 
   const citySelected = (e) => {
     // setCityName(e.target.value);
-    // console.log(e.target.value);
+    console.log(e.target.value);
+    props.setCity(e.target.value);
   };
 
   // useEffect(() => {}, [cityName]);
@@ -33,7 +34,7 @@ const MainSearch = (props) => {
     <>
       <div className="text-center">
         <h1>Meteo in tempo reale</h1>
-        <Form onSubmit={handleSubmit} style={{ margin: "0 auto  0 auto" }}>
+        <Form style={{ margin: "0 auto  0 auto" }}>
           <Form.Control
             type="select"
             name="city"
@@ -44,6 +45,7 @@ const MainSearch = (props) => {
           {!citiesResults.message ? (
             citiesResults.map((city, index) => (
               <option
+                className="city"
                 onClick={(e) => citySelected(e)}
                 key={`${city.name}-${index}`}
                 value={`${city.name},${city.state},${city.country}`}

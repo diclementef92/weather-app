@@ -52,3 +52,10 @@ body {
 .forecast-card-hour .time {
   margin-top: 10px;
 }
+
+option.city {
+  cursor: pointer;
+}
+option.city:hover {
+  background-color: white;
+}
