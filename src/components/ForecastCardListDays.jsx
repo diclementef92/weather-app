@@ -1,5 +1,4 @@
 import ForecastCardDay from "./ForecastCardDay";
-import ForecastCardHour from "./ForecastCardHour";
 
 const ForecastCardListDays = (props) => {
   return (
