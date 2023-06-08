@@ -2,13 +2,19 @@ import { useEffect, useState } from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
 import MainSearch from "./MainSearch";
 import WeatherCardNow from "./WeatherCardNow";
-import fetchWeatherDataByCity from "./fetchWeatherDataByCity";
+
 import ForecastCardList from "./ForecastCardList";
-import fetchForecastDataByCity from "./fetchForecastDataByCity";
+import {
+  fetchForecastDataByCity,
+  fetchForecastDataByCityByInterval,
+} from "./fetchForecastDataByCity";
+import fetchWeatherDataByCity from "./fetchWeatherDataByCity";
+import ForecastCardListDays from "./ForecastCardListDays";
 
 const Home = () => {
   const [weatherCity, setWeatherCity] = useState(null);
   const [forecastCity, setForecastCity] = useState([]);
+
   const [city, setCity] = useState("Milano");
 
   const retriveData = async () => {
@@ -28,7 +34,7 @@ const Home = () => {
       <MainSearch city={city} setCity={setCity} />
 
       {weatherCity ? (
-        weatherCity.cod != 404 ? (
+        weatherCity.cod !== 404 ? (
           <>
             <WeatherCardNow singleDay={weatherCity} />
           </>
@@ -45,8 +51,19 @@ const Home = () => {
         </div>
       )}
       <Row className="w-100 m-0 mt-2">
-        {forecastCity.cod != 404 ? (
+        <p>Prossime ore:</p>
+        {forecastCity.cod !== 404 ? (
           <ForecastCardList forecastHours={forecastCity.slice(0, 6)} />
+        ) : (
+          ""
+        )}
+      </Row>
+      <p>Prossimi giorni:</p>
+      <Row className="w-100 m-0 mt-2">
+        {forecastCity.cod !== 404 ? (
+          <ForecastCardListDays
+            forecastDays={forecastCity.filter((_, i) => i != 0 && i % 8 === 0)}
+          />
         ) : (
           ""
         )}

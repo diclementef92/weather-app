@@ -1,15 +1,16 @@
 import { Card, Col } from "react-bootstrap";
 import { BsFillCaretUpFill } from "react-icons/bs";
 import { BsFillCaretDownFill } from "react-icons/bs";
+const weekday = ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"];
 
-const ForecastCardHour = (props) => {
+const ForecastCardDay = (props) => {
   // let hour = props.forecast.dt_txt.split(" ")[1];
   let time = new Date(props.forecast.dt_txt);
 
   return (
     <Col
-      xs={4}
-      md={2}
+      xs={6}
+      md={3}
       className="forecast-card-hour p-0 d-flex flex-column justify-content-center align-items-center"
     >
       <img
@@ -18,11 +19,10 @@ const ForecastCardHour = (props) => {
       ></img>
       <p className="temp">{props.forecast.main.temp.toFixed(0)}°C</p>
       <p className="time">
-        {time.getHours() < 10 ? "0" + time.getHours() : time.getHours()}:
-        {time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes()}
+        {weekday[time.getDay()]} {time.getDate()}/{time.getMonth() + 1}
       </p>
     </Col>
   );
 };
 
-export default ForecastCardHour;
+export default ForecastCardDay;

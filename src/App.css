@@ -31,10 +31,6 @@ body {
   text-transform: capitalize;
   margin: 0;
 }
-.time {
-}
-.humidity {
-}
 
 .forecast-card-hour {
   background-color: white;
@@ -44,8 +40,7 @@ body {
   font-size: 1em;
   margin-bottom: 5px;
 }
-.forecast-card-hour .temp-min,
-.temp-max {
+.forecast-card-hour .temp-min {
   font-size: 0.8em;
   margin: 0;
 }

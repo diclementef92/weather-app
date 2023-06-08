@@ -1,12 +1,12 @@
 let counter = 0;
-const fetchForecastDataByCity = async (value) => {
+export const fetchForecastDataByCity = async (city) => {
   const baseUrl =
     "https://api.openweathermap.org/data/2.5/forecast?appid=fad6b6ba29a0cab57650fdbccd10c8e5&units=metric&lang=it";
 
   if (counter < 50) {
     try {
       counter++;
-      const res = await fetch(baseUrl + "&q=" + value);
+      const res = await fetch(baseUrl + "&q=" + city);
 
       const body = await res.json();
       if (res.ok) {
@@ -23,4 +23,9 @@ const fetchForecastDataByCity = async (value) => {
     console.log("limite chiamate raggiunto");
   }
 };
-export default fetchForecastDataByCity;
+
+//interval in hours
+export const fetchForecastDataByCityByInterval = async (city, interval) => {
+  const data = await fetchForecastDataByCity(city);
+  return data.map((v, i) => i % interval === 0);
+};
