@@ -4,10 +4,7 @@ import MainSearch from "./MainSearch";
 import WeatherCardNow from "./WeatherCardNow";
 
 import ForecastCardList from "./ForecastCardList";
-import {
-  fetchForecastDataByCity,
-  fetchForecastDataByCityByInterval,
-} from "./fetchForecastDataByCity";
+import { fetchForecastDataByCity } from "./fetchForecastDataByCity";
 import fetchWeatherDataByCity from "./fetchWeatherDataByCity";
 import ForecastCardListDays from "./ForecastCardListDays";
 
@@ -62,7 +59,7 @@ const Home = () => {
       <Row className="w-100 m-0 mt-2">
         {forecastCity.cod !== 404 ? (
           <ForecastCardListDays
-            forecastDays={forecastCity.filter((_, i) => i != 0 && i % 8 === 0)}
+            forecastDays={forecastCity.filter((_, i) => i !== 0 && i % 8 === 0)}
           />
         ) : (
           ""

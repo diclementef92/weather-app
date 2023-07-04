@@ -18,6 +18,7 @@ const WeatherCardNow = (props) => {
           <img
             style={{ width: "100%", maxWidth: "150px" }}
             src={`https://openweathermap.org/img/wn/${props.singleDay.weather[0].icon}@4x.png`}
+            alt={`weather-icon-${props.singleDay.weather[0].icon}`}
           ></img>
         </Col>
 
@@ -58,38 +59,3 @@ const WeatherCardNow = (props) => {
 };
 
 export default WeatherCardNow;
-
-{
-  /* <Card classNameName=" mt-4 shadow-lg">
-        <Card.Img
-          variant="top"
-          src={`https://openweathermap.org/img/wn/${props.singleDay.weather[0].icon}@4x.png`}
-        />
-        <Card.Body>
-          <Card.Text classNameName="city">
-            {props.singleDay.name} - Adesso
-          </Card.Text>
-          <Card.Text classNameName="temp">
-            <Card.Text>
-              {props.singleDay.main.temp}
-              °C
-            </Card.Text>
-            <span classNameName="max">
-              <BsFillCaretUpFill />
-              {props.singleDay.main.temp_max}
-            </span>
-
-            <span classNameName="min">
-              <BsFillCaretDownFill />
-              {props.singleDay.main.temp_min}
-            </span>
-          </Card.Text>
-          <Card.Text classNameName="descr">
-            {props.singleDay.weather[0].description}
-          </Card.Text>
-          <Card.Text classNameName="humidity">
-            Umidità: {props.singleDay.main.humidity}%
-          </Card.Text>
-        </Card.Body>
-      </Card> */
-}

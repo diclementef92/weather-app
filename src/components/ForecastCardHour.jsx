@@ -1,6 +1,4 @@
-import { Card, Col } from "react-bootstrap";
-import { BsFillCaretUpFill } from "react-icons/bs";
-import { BsFillCaretDownFill } from "react-icons/bs";
+import { Col } from "react-bootstrap";
 
 const ForecastCardHour = (props) => {
   // let hour = props.forecast.dt_txt.split(" ")[1];
@@ -15,6 +13,7 @@ const ForecastCardHour = (props) => {
       <img
         style={{ width: "100%", maxWidth: "100px" }}
         src={`https://openweathermap.org/img/wn/${props.forecast.weather[0].icon}@4x.png`}
+        alt={`forecast-icon-${props.forecast.weather[0].icon}`}
       ></img>
       <p className="temp">{props.forecast.main.temp.toFixed(0)}°C</p>
       <p className="time">
