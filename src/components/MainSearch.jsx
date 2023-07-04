@@ -1,25 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 
 import fetchCities from "./fetchCities";
 
 const MainSearch = (props) => {
   const [citiesResults, setCitiesResults] = useState([]);
+  const [errMessage, setErrMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // props.setCity(e.target.value);
-    props.setCity(e.target.elements.city.value);
+    const cities = await fetchCities(e.target[0].value);
+    // console.log(e.target[0].value);
+    if (cities.message) {
+      setErrMessage(cities.message);
+    } else {
+      setCitiesResults(cities);
+    }
   };
 
-  const handleChange = async (e) => {
-    const cities = await fetchCities(e.target.value);
-    // setCityName(e.target.value)
-    setCitiesResults(cities);
-  };
+  // const handleChange = async (e) => {
+  //   const cities = await fetchCities(e.target.value.trim());
+  //   setCitiesResults(cities);
+  // };
 
   const citySelected = (e) => {
-    // props.setCity(e.target.elements.city.value);
     props.setCity(e.target.value);
   };
 
@@ -36,9 +40,9 @@ const MainSearch = (props) => {
             name="city"
             className="text-center"
             placeholder="inserisci la tua citta"
-            onChange={(e) => handleChange(e)}
+            // onChange={(e) => handleChange(e)}
           />
-          {!citiesResults.message ? (
+          {citiesResults && citiesResults.length > 0 ? (
             citiesResults.map((city, index) => (
               <option
                 className="city"
@@ -50,7 +54,7 @@ const MainSearch = (props) => {
               </option>
             ))
           ) : (
-            <p>{citiesResults.message}</p>
+            <p>{errMessage}</p>
           )}
         </Form>
       </div>

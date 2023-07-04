@@ -10,17 +10,19 @@ export const fetchForecastDataByCity = async (city) => {
 
       const body = await res.json();
       if (res.ok) {
-        console.log(body.list);
+        // console.log(body.list);
         return body.list;
       } else {
         console.log("Fetch response status: ", res.status);
         return { ...body, message: "città non trovata, prova di nuovo" }; //traduco il message in italiano
       }
     } catch (err) {
-      console.log("Fetch error: ", err);
+      return { message: "Errore API, prova di nuovo" };
     }
   } else {
-    console.log("limite chiamate raggiunto");
+    return {
+      message: "Errore numero massimo chiamate, aggiorna la pagina",
+    };
   }
 };
 

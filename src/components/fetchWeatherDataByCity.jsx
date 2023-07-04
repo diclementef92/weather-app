@@ -17,10 +17,12 @@ const fetchWeatherDataByCity = async (value) => {
         return { ...body, message: "città non trovata, prova di nuovo" }; //traduco il message in italiano
       }
     } catch (err) {
-      console.log("Fetch error: ", err);
+      return { message: "Errore API, prova di nuovo" };
     }
   } else {
-    console.log("limite chiamate raggiunto");
+    return {
+      message: "Errore numero massimo chiamate, aggiorna la pagina",
+    };
   }
 };
 export default fetchWeatherDataByCity;

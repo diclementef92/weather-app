@@ -14,11 +14,21 @@ const Home = () => {
 
   const [city, setCity] = useState("Milano");
 
+  const [errMessage, setErrMessage] = useState("");
+
   const retriveData = async () => {
     const weatherData = await fetchWeatherDataByCity(city);
+    if (weatherData.message) {
+      setErrMessage(weatherData.message);
+      return;
+    }
     setWeatherCity(weatherData);
 
     const forecastData = await fetchForecastDataByCity(city);
+    if (weatherData.message) {
+      setErrMessage(forecastData.message);
+      return;
+    }
     setForecastCity(forecastData);
   };
 
@@ -29,17 +39,12 @@ const Home = () => {
   return (
     <Container>
       <MainSearch city={city} setCity={setCity} />
-
-      {weatherCity ? (
-        weatherCity.cod !== 404 ? (
-          <>
-            <WeatherCardNow singleDay={weatherCity} />
-          </>
-        ) : (
-          <div className="text-center p-4">
-            <span>{weatherCity.message}</span>
-          </div>
-        )
+      {errMessage ? (
+        <div className="text-center p-4">
+          <span>{errMessage}</span>
+        </div>
+      ) : weatherCity ? (
+        <WeatherCardNow singleDay={weatherCity} />
       ) : (
         <div className="text-center">
           <Spinner animation="border" variant="primary">
@@ -49,20 +54,24 @@ const Home = () => {
       )}
       <Row className="w-100 m-0 mt-2">
         <p>Prossime ore:</p>
-        {forecastCity.cod !== 404 ? (
-          <ForecastCardList forecastHours={forecastCity.slice(0, 6)} />
+        {errMessage ? (
+          <div className="text-center p-4">
+            <span>{errMessage}</span>
+          </div>
         ) : (
-          ""
+          <ForecastCardList forecastHours={forecastCity.slice(0, 6)} />
         )}
       </Row>
       <p>Prossimi giorni:</p>
       <Row className="w-100 m-0 mt-2">
-        {forecastCity.cod !== 404 ? (
+        {errMessage ? (
+          <div className="text-center p-4">
+            <span>{errMessage}</span>
+          </div>
+        ) : (
           <ForecastCardListDays
             forecastDays={forecastCity.filter((_, i) => i !== 0 && i % 8 === 0)}
           />
-        ) : (
-          ""
         )}
       </Row>
     </Container>
