@@ -2,7 +2,6 @@ import { Col } from "react-bootstrap";
 const weekday = ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"];
 
 const ForecastCardDay = (props) => {
-  // let hour = props.forecast.dt_txt.split(" ")[1];
   let time = new Date(props.forecast.dt_txt);
 
   return (

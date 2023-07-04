@@ -3,7 +3,7 @@ const fetchCities = async (value) => {
   const baseUrl =
     "https://api.openweathermap.org/geo/1.0/direct?appid=fad6b6ba29a0cab57650fdbccd10c8e5&limit=5";
 
-  if (counter < 100) {
+  if (counter < 50) {
     try {
       counter++;
       const res = await fetch(baseUrl + "&q=" + value.trim());

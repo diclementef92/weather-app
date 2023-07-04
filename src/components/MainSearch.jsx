@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 
-import fetchCities from "./fetchCities";
+import fetchCities from "../fetches/fetchCities";
 
 const MainSearch = (props) => {
   const [citiesResults, setCitiesResults] = useState([]);
@@ -25,6 +25,7 @@ const MainSearch = (props) => {
 
   const citySelected = (e) => {
     props.setCity(e.target.value);
+    setCitiesResults([]);
   };
 
   return (

@@ -4,8 +4,8 @@ import MainSearch from "./MainSearch";
 import WeatherCardNow from "./WeatherCardNow";
 
 import ForecastCardList from "./ForecastCardList";
-import { fetchForecastDataByCity } from "./fetchForecastDataByCity";
-import fetchWeatherDataByCity from "./fetchWeatherDataByCity";
+import { fetchForecastDataByCity } from "../fetches/fetchForecastDataByCity";
+import fetchWeatherDataByCity from "../fetches/fetchWeatherDataByCity";
 import ForecastCardListDays from "./ForecastCardListDays";
 
 const Home = () => {
