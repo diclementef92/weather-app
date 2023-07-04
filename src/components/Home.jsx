@@ -53,7 +53,7 @@ const Home = () => {
         </div>
       )}
       <Row className="w-100 m-0 mt-2">
-        <p>Prossime ore:</p>
+        <span className="subtitle">Prossime ore:</span>
         {errMessage ? (
           <div className="text-center p-4">
             <span>{errMessage}</span>
@@ -62,8 +62,8 @@ const Home = () => {
           <ForecastCardList forecastHours={forecastCity.slice(0, 6)} />
         )}
       </Row>
-      <p>Prossimi giorni:</p>
       <Row className="w-100 m-0 mt-2">
+        <span className="subtitle">Prossimi giorni:</span>
         {errMessage ? (
           <div className="text-center p-4">
             <span>{errMessage}</span>

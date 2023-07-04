@@ -48,7 +48,7 @@ const WeatherCardNow = (props) => {
         className="w-100 alert alert-light d-none text-center"
         id="weather-info"
         role="alert"
-        style={{ margin: "1em auto  2em auto" }}
+        style={{ margin: "1em auto 1em auto" }}
       >
         <Col xs={4}>Umidità: {props.singleDay.main.humidity} %</Col>
         <Col xs={4}>Pressione: {props.singleDay.main.pressure} hPa</Col>
