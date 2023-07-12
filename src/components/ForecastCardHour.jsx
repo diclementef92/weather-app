@@ -1,7 +1,6 @@
 import { Col } from "react-bootstrap";
 
 const ForecastCardHour = (props) => {
-  // let hour = props.forecast.dt_txt.split(" ")[1];
   let time = new Date(props.forecast.dt_txt);
 
   return (
