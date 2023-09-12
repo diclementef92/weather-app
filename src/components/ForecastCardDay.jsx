@@ -1,4 +1,5 @@
 import { Col } from "react-bootstrap";
+import getIconUrl from "../fetches/getIconUrl";
 const weekday = ["Dom", "Lun", "Mar", "Mer", "Gio", "Ven", "Sab"];
 
 const ForecastCardDay = (props) => {
@@ -12,7 +13,7 @@ const ForecastCardDay = (props) => {
     >
       <img
         style={{ width: "100%", maxWidth: "100px" }}
-        src={`https://openweathermap.org/img/wn/${props.forecast.weather[0].icon}@4x.png`}
+        src={getIconUrl(props.forecast.weather[0].icon)}
         alt={`forecast-icon-${props.forecast.weather[0].icon}`}
       ></img>
       <p className="temp">{props.forecast.main.temp.toFixed(0)}°C</p>

@@ -1,5 +1,6 @@
 import { Col, Row } from "react-bootstrap";
 import { BsThermometerHalf } from "react-icons/bs";
+import getIconUrl from "../fetches/getIconUrl";
 
 const WeatherCardNow = (props) => {
   const toggleSelected = (e) => {
@@ -17,7 +18,8 @@ const WeatherCardNow = (props) => {
         <Col xs={3}>
           <img
             style={{ width: "100%", maxWidth: "150px" }}
-            src={`https://openweathermap.org/img/wn/${props.singleDay.weather[0].icon}@4x.png`}
+            // src={`https://openweathermap.org/img/wn/${props.singleDay.weather[0].icon}@04x.png`}
+            src={getIconUrl(props.singleDay.weather[0].icon)}
             alt={`weather-icon-${props.singleDay.weather[0].icon}`}
           ></img>
         </Col>
