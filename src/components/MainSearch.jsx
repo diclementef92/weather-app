@@ -14,6 +14,7 @@ const MainSearch = (props) => {
     if (cities.message) {
       setErrMessage(cities.message);
     } else {
+      setErrMessage("");
       setCitiesResults(cities);
     }
   };
