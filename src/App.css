@@ -2,7 +2,7 @@
 
 body {
   background-image: url(../public/sfondo.jpg);
-  font-family: "Oswald", sans-serif;
+  /* font-family: "Oswald", sans-serif; */
 }
 
 .weather-card-now {

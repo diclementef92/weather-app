@@ -44,6 +44,9 @@ const MainSearch = (props) => {
             placeholder="inserisci la tua citta"
             // onChange={(e) => handleChange(e)}
           />
+          <option value="" disabled>
+            Seleziona una città
+          </option>
           {citiesResults && citiesResults.length > 0 ? (
             citiesResults.map((city, index) => (
               <option
