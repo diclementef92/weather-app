@@ -12,6 +12,9 @@ body {
 .weather-card-now p {
   margin: 0;
 }
+.weather-card-now row {
+  cursor: pointer;
+}
 .city {
   margin: 0;
 }
